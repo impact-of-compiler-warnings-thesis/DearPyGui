@@ -30,12 +30,12 @@ jobs:
                            libglu1-mesa-dev \
                            libgl1-mesa-dev \
                            libxrandr-dev \
-                           libpython3-dev \
                            xorg-dev
 
       - name: Run build-wrapper
         run: |
           export CPLUS_INCLUDE_PATH=$(python3-config --includes --libs)
+          echo "CPLUS_INCLUDE_PATH = $CPLUS_INCLUDE_PATH"
           mkdir build && cd build
           cmake .. -GNinja -DCMAKE_BUILD_TYPE=Debug -DMV_TESTS_ONLY=False
           cd ..
