@@ -22,7 +22,8 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install libgl1-mesa-dev \
+          sudo apt install ninja-build \
+                           libgl1-mesa-dev \
                            xorg-dev
 
       - name: Run build-wrapper
