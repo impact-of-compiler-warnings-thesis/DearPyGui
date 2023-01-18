@@ -19,13 +19,18 @@ jobs:
         uses: SonarSource/sonarcloud-github-c-cpp@v1
       - name: Init submodules
         run: git submodule update --init --recursive --remote
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install ninja-build \
+                           libglu1-mesa-dev \
                            libgl1-mesa-dev \
-                           xorg-dev \
-                           python3-dev
+                           libxrandr-dev \
+                           xorg-dev
 
       - name: Run build-wrapper
         run: |
