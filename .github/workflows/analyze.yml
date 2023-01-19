@@ -31,11 +31,13 @@ jobs:
                            libgl1-mesa-dev \
                            libxrandr-dev \
                            xorg-dev
-
+      - name: Build Python
+        run: |
+          cd scripts
+          chmod +x BuildPythonForLinux.sh
+          ./BuildPythonForLinux.sh
       - name: Run build-wrapper
         run: |
-          export CPLUS_INCLUDE_PATH=$(python3-config --includes --libs)
-          echo "CPLUS_INCLUDE_PATH = $CPLUS_INCLUDE_PATH"
           mkdir build && cd build
           cmake .. -GNinja -DCMAKE_BUILD_TYPE=Debug -DMV_TESTS_ONLY=False
           cd ..
